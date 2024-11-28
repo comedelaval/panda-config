@@ -1,0 +1,44 @@
+{
+  "name": "web-component-lib",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "main": "./dist/components.umd.cjs",
+  "module": "./dist/components.js",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/components.js",
+      "require": "./dist/components.umd.cjs"
+    },
+    "./preset": {
+      "source": "./src/preset.ts",
+      "types": "./dist/preset.d.ts",
+      "import": {
+        "types": "./dist/preset.d.mts",
+        "default": "./dist/preset.mjs"
+      },
+      "require": "./dist/preset.js"
+    }
+  },
+  "scripts": {
+    "prepare": "pnpm panda codegen",
+    "dev": "vite",
+    "build": "vite build && vue-tsc --emitDeclarationOnly",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.5.13",
+    "tsup": "7.1.0",
+    "@acme/ui-lib": "file:../generated"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^0.48.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "typescript": "~5.6.2",
+    "vite": "^6.0.1",
+    "vue-tsc": "^2.1.10"
+  }
+}
